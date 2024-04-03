@@ -1,22 +1,38 @@
-function add(a, b) {
-    return a + b;
+let num1 = Number;
+
+let num2 = Number;
+
+const buttons = document.querySelectorAll('.btn');
+const displayBox = document.getElementById('displayBox');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Get the text content of the clicked button
+        const buttonText = button.textContent;
+        
+        // Update the displayBox content with the button text
+        displayBox.textContent = buttonText;
+    });
+});
+
+
+
+function add(num1, num2) {
+
+    return num1 + num2;
 }
 
-function subtract(a,b) {
-    return a - b;
+function subtract(num1,num2) {
+    return num1 - num2;
 }
 
-function divide(a,b) {
-    return a / b; 
+function divide(num1,num2) {
+    return num1 / num2; 
 }
 
-function multiply(a,b) {
-    return a * b;
+function multiply(num1,num2) {
+    return num1 * num2; 
 }
-
-let num1 = a 
-
-let num2 = b 
 
 let operator = ['+', '-', '*', '/']; 
 
