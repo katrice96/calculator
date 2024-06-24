@@ -5,42 +5,11 @@ let operator = ''
 const buttons = document.querySelectorAll('.btn');
 const displayBox = document.getElementById('displayBox');
 
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        const buttonText = button.textContent;
-
-        // Check if the button is a number or decimal using OR  
-        if (!isNaN(parseInt(buttonText)) || buttonText === '.') {
-            // uses an equality operation to check type of input and add the value of a button to the displayBox
-            if (operator === '') {
-                num1 += buttonText;
-                displayBox.textContent = num1;
-            } else {
-                num2 += buttonText;
-                displayBox.textContent = num2;
-            }
-        } else if (buttonText === '+' || buttonText === '-' || buttonText === '*' || buttonText === '/') {
-            operator = buttonText;
-            displayBox.textContent += ' ' + operator + ' ';
-        } else if (buttonText === '=') {
-            if (num1 !== '' && num2 !== '' && operator !== '') {
-                const result = operate(parseFloat(num1), operator, parseFloat(num2));
-                displayBox.textContent = result;
-                num1 = result.toString();
-                num2 = '';
-                operator = '';
-            }
-        } else if (buttonText === 'c') {
-            num1 = '';
-            num2 = '';
-            operator = '';
-            displayBox.textContent = '';
-        }
-    });
-});
-
-
-
+if (!displayBox) {
+    console.error('Display box element not found');
+} else {
+    console.log('Display box element found');
+}
 
 function add(num1, num2) {
 
@@ -77,5 +46,45 @@ let operate = function(num1,operator,num2) {
       }
 
 }
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const buttonText = button.textContent;
+
+            console.log('Button pressed:', buttonText);
+
+        // Check if the button is a number or decimal using OR  
+        if (!isNaN(parseInt(buttonText)) || buttonText === '.') {
+            // uses an equality operation to check type of input and add the value of a button to the displayBox
+            if (operator === '') {
+                num1 += buttonText;
+                displayBox.textContent = num1;
+            } else {
+                num2 += buttonText;
+                displayBox.textContent = num2;
+            }
+        } else if (buttonText === '+' || buttonText === '-' || buttonText === '*' || buttonText === '/') {
+            operator = buttonText;
+            displayBox.textContent += ' ' + operator + ' ';
+        } else if (buttonText === '=') {
+            if (num1 !== '' && num2 !== '' && operator !== '') {
+                const result = operate(parseFloat(num1), operator, parseFloat(num2));
+                displayBox.textContent = result;
+                num1 = result.toString();
+                num2 = '';
+                operator = '';
+            }
+        } else if (buttonText === 'c') {
+            num1 = '';
+            num2 = '';
+            operator = '';
+            displayBox.textContent = '';
+        }
+    });
+});
+
+
+
+
 
 
